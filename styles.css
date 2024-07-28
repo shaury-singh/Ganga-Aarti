@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.975);
+    display: grid;
+}
+header{
+    margin: 20px;
+}
+.nav-left{
+    float: left;
+    width: 50%;
+}
+.hero-section{
+    margin-top: 50px;
+    padding: 0px 0px 0px 100px;
+    display: flex;
+}
+.left-side-img{
+    display: flex;
+    justify-content: center;
+    float: left;
+    width: 30%;
+}
+.left-side-img img{
+    z-index: -2;
+    height: 600px;
+    width: auto;
+    mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    -webkit-mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+}
+.right-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    float: right;
+    width: 65%;
+    text-align: center;
+}
+.right-info h1{
+    display: flex;
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    color: white;
+}
+.right-info p{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: small;
+    font-style: normal;
+    color: white;
+}
+.right-info p{
+    color: white;
+}
+.heading-event-collection{
+    width: 100%;
+}
+.event-collection{
+    display: grid;
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: white;
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+.events{
+    width: 100%;
+    display: flex;
+}
+.event-hero{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.event-desc{
+    float: left;
+    width: 33.33%;
+    margin: 0px 20px 0px 20px;
+}
+.event-img{
+    height: 400px;
+    width: 350px;
+    border-radius: 30%;
+    mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    -webkit-mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+}
+.desc-font{
+    font-family: "Playfair Display", serif;
+}
+.event-desc{
+    text-align: center;
+}
+.heading-counter{
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-weight: 100;
+}
+.move-out-num{
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+.count-div{
+    display: grid;
+}
+.count-div h1{
+    font-size: 52px;
+}
+.count-div p{
+    font-size: 28px;
+}
+.counter-desc{
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+}
+.abt-img{
+    mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    -webkit-mask-image: 
+    linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
+    linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to top, transparent, black 10%, black 80%, transparent), 
+    linear-gradient(to left, transparent, black 15%, black 75%, transparent);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+}
+.abt-txt{
+    margin-right: 50px;
+    margin-left: 50px;
+    padding: 20px;
+}
