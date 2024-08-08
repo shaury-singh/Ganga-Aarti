@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .primary-flex{
     display: flex;
 }
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 .nav-link{
-    font-family: "Mukta", sans-serif;
+    font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: larger;
@@ -24,7 +24,7 @@
 .list-elements{
     position: relative;
     color: white;
-    font-family: "Mukta", sans-serif;
+    font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-size: larger;
@@ -66,4 +66,10 @@
 }
 .margin-bottom{
     margin-bottom: 25px;
+}
+.bg-footer{
+    background-color: rgba(27, 27, 27, 0.833);
+}
+.pad{
+    padding: 40px;
 }
