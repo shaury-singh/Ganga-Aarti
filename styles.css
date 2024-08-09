@@ -202,3 +202,84 @@ footer{
     padding: 0px;
     border-radius: 10px;
 }
+
+
+/* For Mobile */
+
+@media only screen and (max-width: 450px) {
+    .hero-section{
+        padding: 0;
+        flex-direction: column;
+    }
+    .left-side-img{
+        width: 400px;
+    }
+    .left-side-img img{
+        margin-left: auto;
+        width: 26rem;
+        height: auto;
+    }
+    .right-info{
+        margin: 3.2em;
+        width: 300px;
+    }
+    .right-info p{
+        margin-top: 0.8rem;
+        font-size: 1rem;
+    }
+    .static{
+        height: 4.9rem;
+    }
+    .event-collection{
+         margin-top: 0;
+         width: 380px;
+         margin-left: 1rem;
+    }
+
+    .events{
+        margin: auto;
+        flex-direction: column;
+    }
+    .event-desc{
+        width:380px;
+        margin: 0;
+    }   
+    .event-desc img{
+        width:380px;
+        height: auto;
+    }
+
+    .move-out-num{
+        margin: 0 0 4rem 2.5rem;
+        width: 400px;
+    }
+    .count-div{
+        margin: 1.7rem auto;
+    }
+    .primary-flex{
+        flex-direction: column;
+    }
+
+    .about-us{
+        width: 400px;
+    }
+
+    .about-us h1{
+        text-align: center;
+        font-size: 2.5em;
+    }
+    footer{
+        margin-top: 20px;
+        padding: 0;
+    }
+    .footer{
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    .footer_content{
+        margin-top: 2rem;
+    }
+    .map{
+        width: 350px;
+    }
+}
