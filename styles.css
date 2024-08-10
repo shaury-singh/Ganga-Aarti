@@ -204,24 +204,56 @@ footer{
 }
 
 
-/* For Mobile */
+.navbar-toggler{
+    color: white;
+}
+.navbar-toggler-icon{
+    margin-top: 5px;
+}
+.navbar a{
+    color: white;
 
-@media only screen and (max-width: 450px) {
+}
+
+
+/* For Mobile */
+@media only screen and (max-width: 680px) {
+    /* Navbar */
+    nav{
+        width: 100%;
+    }
+    .nav-left{
+        width: 250px;
+    }
+    .nav-right a{
+        display: none;
+    }
+    .nav-right #icon{
+        display: block;
+        position: relative;
+        margin: 6px 1.5rem;
+        color: white;
+    }
+    .nav-right a#icon {
+        float: right;
+        display: block;
+      }
     .hero-section{
         padding: 0;
         flex-direction: column;
     }
     .left-side-img{
-        width: 400px;
+        width: 90%;
     }
     .left-side-img img{
         margin-left: auto;
-        width: 26rem;
+        width: 28rem;
         height: auto;
     }
     .right-info{
-        margin: 3.2em;
-        width: 300px;
+
+        margin: 2rem auto ;
+        width: 30rem;
     }
     .right-info p{
         margin-top: 0.8rem;
@@ -231,9 +263,9 @@ footer{
         height: 4.9rem;
     }
     .event-collection{
-         margin-top: 0;
-         width: 380px;
-         margin-left: 1rem;
+         margin-top: 2.5rem;
+         width: 90%;
+        margin-left: 8%;
     }
 
     .events{
@@ -241,17 +273,23 @@ footer{
         flex-direction: column;
     }
     .event-desc{
-        width:380px;
+        width:90%;
         margin: 0;
     }   
     .event-desc img{
-        width:380px;
+        width:80%;
         height: auto;
     }
 
     .move-out-num{
-        margin: 0 0 4rem 2.5rem;
-        width: 400px;
+        margin: 0 0 4rem 1rem;
+        width: 90%;
+    }
+    .heading-counter{
+        text-align: center;
+    }
+    .counter-desc{
+        text-align: center;
     }
     .count-div{
         margin: 1.7rem auto;
@@ -259,9 +297,11 @@ footer{
     .primary-flex{
         flex-direction: column;
     }
-
+    .heading{
+        text-align: center;
+    }
     .about-us{
-        width: 400px;
+        width: 30rem;
     }
 
     .about-us h1{
@@ -271,6 +311,7 @@ footer{
     footer{
         margin-top: 20px;
         padding: 0;
+        margin-left: 0;
     }
     .footer{
         grid-template-columns: 1fr;
@@ -279,7 +320,10 @@ footer{
     .footer_content{
         margin-top: 2rem;
     }
-    .map{
-        width: 350px;
+    #map{
+        width: 22em;
     }
+    /* .quick-link ,.contact{
+        text-align: center;
+    } */
 }

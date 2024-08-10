@@ -40,3 +40,16 @@ function deletingEffect() {
     };
     loopDeleting();
 }
+
+
+const navBtn = document.getElementById('icon'); 
+navBtn.addEventListener('click', () => {
+    var x = document.getElementById("list-a");
+    console.log(x.className);
+    
+    if (x.className === "nav-right") {
+        x.className += "responsive";
+      } else {
+        x.className = "nav-right";
+      }
+});
