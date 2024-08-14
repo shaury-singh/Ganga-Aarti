@@ -81,3 +81,38 @@ position-marker{
     font-size: 20px;
     transition: 0.8s;
 }
+
+@media screen and (max-width:600px) {
+    main{
+        margin: 20px;
+    }
+
+    .head-pos-abs{
+        font-size: 6rem;
+        top: 50px;
+        left: 10px;
+    }
+    .head{
+        top: -110px;
+        font-size: 1rem;
+    }
+    .font-abt{
+        margin: 8px 0px 0px 10px;
+    }
+    .primary-flex div:first-child{
+        order: 1;
+    }
+    
+    .right-section{
+        margin: auto;
+    }
+    .abt-img{
+        height: 34rem;
+    }
+
+    .submit-div button {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+    }
+}
