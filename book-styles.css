@@ -70,6 +70,33 @@ section form{
     font-family: "Playfair Display", serif;
 }
 
+/* Media-queries: */
+@media screen and (max-width: 1024px){
+    .input{
+        width: 100%;
+    }
+
+    .book-section{
+        width: 80%;
+        margin: 0 40px;
+        justify-content: center;
+        font-size: 2rem;
+    }
+
+    .img-sec-img{
+        height: 100%;
+        object-fit: cover;
+    }
+    .submit-div{
+        margin: 1rem 0 0 3.3rem;
+    }
+    .submit-div button{
+        font-size: 1.8rem;
+        padding: 0.8rem 1.8rem;
+        border-radius: 1rem;
+    }
+
+}
 @media screen and (max-width: 600px){
     .input{
         width: 100%;

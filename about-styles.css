@@ -2,7 +2,7 @@
 main{
     margin: 80px;
 }
-position-marker{
+.position-marker{
     display: flex;
     justify-content: center;
     position: relative;
@@ -82,6 +82,66 @@ position-marker{
     transition: 0.8s;
 }
 
+@media screen and (max-width: 1024px ){
+    main{
+        margin: 40px;
+    }
+    .head-pos-abs {
+        font-size: 8rem;
+    }
+
+    .head {
+        top: -80px;
+        margin: 0 0 0 40px;
+    }
+    .abt-img{
+        width: 35rem;
+    }
+    .submit-div button{
+        padding: 15px 40px;
+        font-size: larger;
+        font-weight: 700;
+    }
+    .font-abt{
+        font-weight: 200;
+    }
+}
+
+
+@media screen and (max-width: 840px) and (min-width: 600px) {
+    .position-marker,
+    .right-section {
+        float: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .head-pos-abs {
+        font-size: 6rem;
+        margin-left: 0px;
+        top: 60px;
+        left:20px;
+        position: relative;
+    }
+
+    .head {
+        top: -50px;
+        margin: 0 0 0 20px;
+        font-size: 1.1rem;
+    }
+
+    .font-abt {
+
+        margin: 0 20px;
+    }
+    .abt-img{
+        object-fit: cover;
+    }
+    .submit-div {
+        margin: 20px 0 0 20px;
+    }
+}
+
 @media screen and (max-width:600px) {
     main{
         margin: 20px;
@@ -90,26 +150,29 @@ position-marker{
     .head-pos-abs{
         font-size: 6rem;
         top: 50px;
-        left: 10px;
+        margin-left: 15px;
     }
     .head{
         top: -110px;
         font-size: 1rem;
+        margin-left: 15px;
     }
     .font-abt{
-        margin: 8px 0px 0px 10px;
+        margin: auto;
     }
     .primary-flex div:first-child{
         order: 1;
     }
     
     .right-section{
-        margin: auto;
+        margin: 0 0 0 20px;
     }
     .abt-img{
         height: 34rem;
     }
-
+    .submit-div{
+        margin: 20px 0 0 10px;
+    }
     .submit-div button {
         width: 100%;
         padding: 10px;

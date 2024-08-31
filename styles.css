@@ -117,6 +117,7 @@ header{
 }
 .desc-font{
     font-family: "Playfair Display", serif;
+
 }
 .event-desc{
     text-align: center;
@@ -219,25 +220,12 @@ footer{
 /* For Mobile */
 @media only screen and (max-width: 680px) {
     /* Navbar */
-    nav{
-        width: 100%;
+    .navbar{
+        width: 90%;
     }
     .nav-left{
-        width: 250px;
+        width: 100%;
     }
-    .nav-right a{
-        display: none;
-    }
-    .nav-right #icon{
-        display: block;
-        position: relative;
-        margin: 6px 1.5rem;
-        color: white;
-    }
-    .nav-right a#icon {
-        float: right;
-        display: block;
-      }
     .hero-section{
         padding: 0;
         flex-direction: column;
@@ -252,8 +240,8 @@ footer{
     }
     .right-info{
 
-        margin: 2rem auto ;
-        width: 30rem;
+        margin: 2rem;
+        width: 70%;
     }
     .right-info p{
         margin-top: 0.8rem;
@@ -265,7 +253,7 @@ footer{
     .event-collection{
          margin-top: 2.5rem;
          width: 90%;
-        margin-left: 8%;
+        /* margin-left: 3%; */
     }
 
     .events{
@@ -274,22 +262,32 @@ footer{
     }
     .event-desc{
         width:90%;
-        margin: 0;
+        margin: auto;
     }   
     .event-desc img{
         width:80%;
         height: auto;
     }
-
+    .event-desc  p{
+        margin: auto;
+        width: 80%;
+    }
     .move-out-num{
-        margin: 0 0 4rem 1rem;
         width: 90%;
     }
     .heading-counter{
         text-align: center;
     }
+    .abt-img{
+        width: 90%;
+    }
+    .counter-phone{
+        width: 84%;
+    }
     .counter-desc{
         text-align: center;
+        margin-left: 0%;
+        width: 84%;
     }
     .count-div{
         margin: 1.7rem auto;
@@ -321,9 +319,50 @@ footer{
         margin-top: 2rem;
     }
     #map{
-        width: 22em;
+        width: 80%;
     }
-    /* .quick-link ,.contact{
-        text-align: center;
-    } */
+}
+
+@media only screen and (max-width:1024px) and (min-width: 680px){
+    .navbar{
+        width: 73%;
+    }
+    .hero-section{
+        padding: 0;
+        width: 80%;
+    }
+    .left-side-img img{
+        width: 40rem;
+        height: 100%;
+    }   
+    .right-info{
+        width: 40%;
+        margin: auto;
+    }   
+    .event-collection{
+        width: 75%;
+    }
+    .move-out-num{
+        width: 75%;
+    }
+    .about-us{
+        width: 70%;
+    }
+    .abt-img{
+        width: 55%;
+    }
+    .event-desc{
+        width: 80%;
+    }
+    
+    .footer{
+        width: 75%;
+        margin: 0%;
+    }
+    .quick-link{
+        width: 100%;
+    }
+    .footer_content{
+        width: 100%;
+    }
 }
