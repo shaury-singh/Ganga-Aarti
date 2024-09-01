@@ -323,46 +323,112 @@ footer{
     }
 }
 
-@media only screen and (max-width:1024px) and (min-width: 680px){
-    .navbar{
-        width: 73%;
-    }
+@media only screen and (max-width:1024px) and (min-width: 830px){
     .hero-section{
-        padding: 0;
-        width: 80%;
+        /* padding: 0; */
+        width: 100%;
     }
     .left-side-img img{
+        margin-left: 5rem;
         width: 40rem;
         height: 100%;
     }   
     .right-info{
-        width: 40%;
-        margin: auto;
+        text-align: center;
+        margin: 0;
     }   
+    .right-info p{
+        width: 80%;
+        margin: auto;
+    }
+    #word{
+        /* height: 4.9rem; */
+        width: 10rem;
+        margin: auto;
+    }
     .event-collection{
-        width: 75%;
+        width: 100%;
     }
-    .move-out-num{
-        width: 75%;
-    }
-    .about-us{
-        width: 70%;
-    }
+
     .abt-img{
         width: 55%;
     }
     .event-desc{
         width: 80%;
+        flex: 1;
     }
     
     .footer{
-        width: 75%;
+        width: 100%;
         margin: 0%;
     }
-    .quick-link{
+    .quick-link a{
         width: 100%;
+        line-height: 2;
+        margin-left: 50px;
     }
     .footer_content{
         width: 100%;
+    }
+    .events{
+        /* display: grid; */
+        margin: auto;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .event-img{
+        width: 20rem;
+    }
+    .event-desc:nth-child(3){
+        flex-basis: 100%;
+        margin-top: 3rem;
+    }
+    .event-desc:nth-child(3) p{
+        margin: auto;
+        width: 25rem;
+    }
+}
+
+@media screen and (max-width:830px) and (min-width:680px) {
+    .navbar{
+        /* width: 80%; */
+    }
+    .left-side-img img{
+        width: 40rem;
+        height: auto;
+    }
+    .right-info{
+        margin: auto;
+    }
+    .right-info h1{
+        line-height: 1.5;
+    }
+    .events{
+        margin: 0;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .event-desc{
+        width: 70%;
+    }
+    .event-img{
+        margin: auto;
+    }
+    .hero-section{
+        padding: 20px;
+        width: 100%;
+        flex-direction: column;
+    }
+    .left-side-img{
+        margin: auto;
+    }
+
+    .abt-img{
+        width: 50%;
+    }
+    .footer{
+        width: 80%;
+        margin: 0;
     }
 }
