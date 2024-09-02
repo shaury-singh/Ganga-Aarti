@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+main{
+    margin: 80px;
+}
+position-marker{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 40px;
+}
+.left-section{
+    display: grid;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+.head-pos-abs{
+    text-align: left;
+    /* justify-content: center;
+    display: flex; */
+    /* position: absolute; */
+    margin-left: 40px;
+    top: 80px;
+    left: 50px;
+    font-weight: 700;
+    opacity: 0.26;
+    z-index: -2;
+    right: 0;
+    bottom: 0;
+    color: white;
+    font-size: 10em;
+    font-family: inherit;
+    height: 200px;
+}
+.head{
+    display: flex;
+    position: relative;
+    top: -50px;
+    /* font-size: 23px; */
+    justify-content: left;
+    margin: 0 0 0 40px;
+    color: wheat;
+}
+.font-abt{
+    color: white;
+    width: fit-content;
+    display: flex;
+    justify-content: left;
+    text-align: justify;
+    margin: 0px 0px 0px 20px;
+    align-items: start;
+}
+.position-marker,.right-section{ 
+    float: left;
+    width: 50%;
+}
+.right-section{
+    display: flex;
+    justify-content: center;
+}
+.submit-div{
+    display: flex;
+    justify-content: left;
+    margin: 20px 0px 0px 30px;
+}
+.submit-div button{
+    width: max-content;
+    padding: 8px 8px;
+    font-family: "Playfair Display",serif;
+    background-color: rgba(34, 33, 33, 0.862);
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.8px rgba(40, 39, 39, 0.764) solid;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.submit-div button:hover{
+    padding: 10px 10px;
+    font-size: 20px;
+    transition: 0.8s;
+}

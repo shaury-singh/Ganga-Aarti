@@ -1,0 +1,17 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+main{
+    margin-top: 100px;
+}
+.carousel-inner{
+    display: flex;
+    justify-content: space-around;
+}
+.img-dec{
+    aspect-ratio: 1/1;
+    width: 50vw;
+    height: 70vh;
+}
