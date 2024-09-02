@@ -33,6 +33,10 @@ app.get('/gallery',(req,res)=>{
     res.status(200).render("gallery.pug")
 })
 
+app.get('/services',(req,res)=>{
+    res.status(200).render('services.pug');
+})
+
 app.listen(port, ()=>{
     console.log(`Application Started in Development Phase on you Localhost at Port:${port}`);
 });
