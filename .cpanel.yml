@@ -10,18 +10,11 @@ deployment:
     # Sync files from the `static` directory in `repositories/Ganga-Aarti` to `public_html/static`
     - rsync -avz --exclude='.*' ./repositories/Ganga-Aarti/static/ ~/public_html/static/
 
-    # Install dependencies
-    - cd ~/Ganga-Aarti && /usr/local/bin/npm install
-
     # Log deployment information
     - echo "Deployment Time: $(date)" > ~/deployment-info.txt
     - echo "Commit SHA: $(git rev-parse HEAD)" >> ~/deployment-info.txt
     - echo "Author: $(git log -1 --pretty=format:'%an')" >> ~/deployment-info.txt
     - echo "Commit Date: $(git log -1 --pretty=format:'%ad')" >> ~/deployment-info.txt
+    - echo "Commit Message: $(git log -1 --pretty=format:'%s')" >> ~/deployment-info.txt
 
-    # Optionally, upload the log file to a specific location if supported
-    # - cp ~/deployment-info.txt ~/public_html/deployment-info.txt
 
-    # Restart the Node.js server
-    - pkill -f node || true
-    - nohup node ~/Ganga-Aarti/loader.cjs &
