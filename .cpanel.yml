@@ -5,14 +5,9 @@ deployment:
         - git pull origin main
 
         # Sync all files from the current directory to `Ganga-Aarti`, excluding the `static` directory
-        - rsync -avz --exclude='static/' --exclude='.*' ./ ~/Ganga-Aarti/
+        # Use --delete to remove files in the destination that no longer exist in the source
+        - rsync -avz --delete --exclude='static/' --exclude='.*' ./ ~/Ganga-Aarti/
 
         # Sync files from the `static` directory in the current directory to `public_html/static`
-        - rsync -avz --exclude='.*' ./static/ ~/public_html/static/
-
-        # Log deployment information
-        - echo "Deployment Time: $(date)" > ~/deployment-info.txt
-        - echo "Commit SHA: $(git rev-parse HEAD)" >> ~/deployment-info.txt
-        - echo "Author: $(git log -1 --pretty=format:'%an')" >> ~/deployment-info.txt
-        - echo "Commit Date: $(git log -1 --pretty=format:'%ad')" >> ~/deployment-info.txt
-        - echo "Commit Message: $(git log -1 --pretty=format:'%s')" >> ~/deployment-info.txt
+        # Use --delete to remove files in the destination that no longer exist in the source
+        - rsync -avz --delete --exclude='.*' ./static/ ~/public_html/static/
