@@ -1,3 +1,9 @@
+## Install dependencies:
+
+```bash
+npm install
+```
+
 
 ## Running the Application
 
