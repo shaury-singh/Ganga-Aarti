@@ -1,0 +1,18 @@
+---
+deployment:
+  tasks:
+    # Pull the latest changes from the main branch
+    - git pull origin main
+
+    # Sync all files from `repositories/Ganga-Aarti` to `Ganga-Aarti`, excluding the `static` directory
+    - rsync -avz --exclude='static/' --exclude='.*' ./repositories/Ganga-Aarti/ ~/Ganga-Aarti/
+
+    # Sync files from the `static` directory in `repositories/Ganga-Aarti` to `public_html/static`
+    - rsync -avz --exclude='.*' ./repositories/Ganga-Aarti/static/ ~/public_html/static/
+
+    # Install dependencies
+    - cd ~/Ganga-Aarti && /usr/local/bin/npm install
+
+    # Restart the Node.js server
+    - pkill -f node || true
+    - nohup node ~/Ganga-Aarti/loader.cjs &
