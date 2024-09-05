@@ -64,9 +64,11 @@ header{
 .right-info p{
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    font-size: small;
+    font-size: normal;
     font-style: normal;
     color: white;
+    width: 80%;
+    margin: 0 auto;
 }
 .right-info p{
     color: white;
@@ -146,6 +148,8 @@ header{
     font-weight: 100;
 }
 .abt-img{
+    width: 40rem;
+    height: auto;
     mask-image: 
     linear-gradient(to right, transparent, black 15%, black 75%, transparent), 
     linear-gradient(to bottom, transparent, black 10%, black 80%, transparent), 
@@ -214,7 +218,20 @@ footer{
 
 }
 
+.text-abt{
+    font-size: larger;
+    line-height: 2;
+    font-weight: 200;
+    width: 40%;
+    text-align: center;
+}
 
+.about-info{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 /* For Mobile */
 @media only screen and (max-width: 680px) {
     /* Navbar */
@@ -241,13 +258,14 @@ footer{
     .right-info p{
         margin-top: 0.8rem;
         font-size: 1rem;
+        width: 90%;
     }
     .static{
         height: 4.9rem;
     }
     .event-collection{
          width: 100%;
-         margin: 5rem 0 0 0;
+         margin: 5rem 0 0 0right;
         /* margin-left: 3%; */
     }
 

@@ -80,12 +80,25 @@ section form{
 }
 
 
-
+.date{
+    margin-top:5px ;
+    margin-left: 20px;
+    padding: 8px;
+    border: 0.8px solid #3b3a3a9c;
+    background-color: #2a292999;
+    height: 30px;
+    width: 400px;
+    border-radius: 5px;
+    color: white;
+}
 @media screen and (max-width: 600px){
     body{
         overflow: scroll;
     }
     .input{
+        width: 100%;
+    }
+    .date{
         width: 100%;
     }
     .book-section{
