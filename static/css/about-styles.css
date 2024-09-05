@@ -36,10 +36,10 @@ main{
 .head{
     display: flex;
     position: relative;
-    top: -50px;
+    top: -8.3rem;
     /* font-size: 23px; */
     justify-content: left;
-    margin: 0 0 0 40px;
+    margin: 0 0 0 45px;
     color: wheat;
 }
 .font-abt{
@@ -65,8 +65,9 @@ main{
     margin: 20px 0px 0px 30px;
 }
 .submit-div button{
+    height: max-content;
     width: max-content;
-    padding: 8px 8px;
+    padding: 10px 10px;
     font-family: "Playfair Display",serif;
     background-color: rgba(34, 33, 33, 0.862);
     color: white;
@@ -77,7 +78,8 @@ main{
     transition: 0.8s;
 }
 .submit-div button:hover{
-    padding: 10px 10px;
+    
+    padding: 15px 40px;
     font-size: 20px;
     transition: 0.8s;
 }
@@ -91,7 +93,8 @@ main{
     }
 
     .head {
-        top: -80px;
+        font-size: 1.5rem;
+        top: -90px;
         margin: 0 0 0 40px;
     }
     .abt-img{
@@ -126,8 +129,8 @@ main{
     }
 
     .head {
-        top: -50px;
-        margin: 0 0 0 20px;
+        top: -70px;
+        margin: 0 0 0 30px;
         font-size: 1.1rem;
     }
 
