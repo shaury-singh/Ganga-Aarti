@@ -5,6 +5,9 @@
 .justify-center{
     justify-content: center;
 }
+.container-fluid a img{
+    width: 100px;
+}
 .nav-link{
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
