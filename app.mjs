@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import nodemailer from 'nodemailer';
 
 const app = express();
 const port = 8000;
@@ -20,8 +21,30 @@ app.get('/book-your-aarti',(req,res)=>{
     res.status(200).render('book.pug');
 })
 
+// transporter
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'shaurysingh84@gmail.com',
+      pass: 'yvzx nuks ezbm pehj',
+    },
+});
+
 app.post('/book-your-aarti',(req,res)=>{
     const body = req.body;
+    // mail data
+    const mail = {
+        from: 'shaurysingh84@gmail.com',
+        to: 'rathore.singh.shaury@gmail.com',
+        subject: 'New Booking',
+        text: `date:${req.body.date}\nname:${req.body.Name}\nmail:${req.body.Email}\nphone:${req.body.phoneNumber}\nPlace:${req.body.Place}`
+    };
+    transporter.sendMail(mail, (error, info) => {
+        if (error) {
+          return console.error('Error sending email:', error);
+        }
+        console.log('Email sent successfully:', info.response);
+    });
     console.log(body);
     res.send("Done");
 })
