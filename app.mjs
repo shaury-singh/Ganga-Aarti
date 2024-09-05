@@ -28,6 +28,8 @@ const transporter = nodemailer.createTransport({
 		user: "shaurysingh84@gmail.com",
 		pass: "yvzx nuks ezbm pehj",
 	},
+	port: 587, // Use STARTTLS
+	secure: false, // Set to false for STARTTLS
 });
 
 transporter.verify((err, success) => {
