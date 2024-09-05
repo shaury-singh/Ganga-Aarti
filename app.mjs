@@ -21,16 +21,16 @@ app.get("/book-your-aarti", (req, res) => {
 	res.status(200).render("book.pug");
 });
 
-// transporter
 const transporter = nodemailer.createTransport({
-	service: "gmail",
+	host: "mail.gangaaartievents.com", // SMTP server hostname
+	port: 465, // Port for SSL
+	secure: true, // Use SSL/TLS
 	auth: {
-		user: "shaurysingh84@gmail.com",
-		pass: "yvzx nuks ezbm pehj",
+		user: "support@gangaaartievents.com", // Your email address
+		pass: "support@gangaaartievents.com", // Your email account password
 	},
-	port: 587, // Use STARTTLS
-	secure: false, // Set to false for STARTTLS
 });
+
 
 transporter.verify((err, success) => {
 	if (err) console.error(err);
@@ -76,7 +76,7 @@ app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
 	// mail data
 	const mail = {
-		from: "shaurysingh84@gmail.com",
+		from: "support@gangaaartievents.com",
 		to: "rathore.singh.shaury@gmail.com",
 		subject: "New Booking",
 		text: `Date: ${req.body.date}\n
@@ -87,7 +87,7 @@ app.post("/book-your-aarti", async (req, res) => {
 	};
 	// mail data
 	const mailToUser = {
-		from: "shaurysingh84@gmail.com",
+		from: "support@gangaaartievents.com",
 		to: req.body.Email,
 		subject: "Appointment Confirmation For Ganga Aarti Events",
 		html: `<h1>The Following Is Your Appointment Details:</h1>
