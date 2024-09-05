@@ -1,5 +1,5 @@
 async function loadApp() {
-	await import("./app.mjs");
+	await import("./app.js");
 }
 
 loadApp();

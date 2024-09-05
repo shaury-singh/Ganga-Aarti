@@ -1,14 +1,19 @@
-import express from 'express';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+// import express from 'express';
+const express = require('express');
+// import path from 'path';
+const path = require('path');
+// import { dirname } from 'path';
+// import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 8000;
 
-app.use('/static',express.static('static'));
+// app.use('/static',express.static('static'));
+app.use('/static', express.static('static'));
+// app.set('view engine', 'pug');
+// const __dirname = dirname(fileURLToPath(import.meta.url));
+// app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'pug');
-const __dirname = dirname(fileURLToPath(import.meta.url));
 app.set('views', path.join(__dirname,'views'));
 app.use(express.urlencoded({ extended: true }));
 
