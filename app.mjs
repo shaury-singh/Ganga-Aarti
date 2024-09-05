@@ -1,33 +1,38 @@
-import express from 'express';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import nodemailer from 'nodemailer';
+import express from "express";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import nodemailer from "nodemailer";
 
 const app = express();
 const port = 8000;
 
-app.use('/static',express.static('static'));
-app.set('view engine', 'pug');
+app.use("/static", express.static("static"));
+app.set("view engine", "pug");
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.set('views', path.join(__dirname,'views'));
+app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/',(req,res)=>{
-    res.status(200).render('index.pug');
-})
+app.get("/", (req, res) => {
+	res.status(200).render("index.pug");
+});
 
-app.get('/book-your-aarti',(req,res)=>{
-    res.status(200).render('book.pug');
-})
+app.get("/book-your-aarti", (req, res) => {
+	res.status(200).render("book.pug");
+});
 
 // transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'shaurysingh84@gmail.com',
-      pass: 'yvzx nuks ezbm pehj',
-    },
+	service: "gmail",
+	auth: {
+		user: "shaurysingh84@gmail.com",
+		pass: "yvzx nuks ezbm pehj",
+	},
+});
+
+transporter.verify((err, success) => {
+	if (err) console.error(err);
+	console.log("Your config is correct");
 });
 
 // app.post('/book-your-aarti',async (req,res)=>{
@@ -65,57 +70,60 @@ const transporter = nodemailer.createTransport({
 //     });
 // });
 
-app.post('/book-your-aarti', async (req, res) => {
-    const body = req.body;
-    // mail data
-    const mail = {
-        from: 'shaurysingh84@gmail.com',
-        to: 'rathore.singh.shaury@gmail.com',
-        subject: 'New Booking',
-        text: `Date: ${req.body.date}\n
+app.post("/book-your-aarti", async (req, res) => {
+	const body = req.body;
+	// mail data
+	const mail = {
+		from: "shaurysingh84@gmail.com",
+		to: "rathore.singh.shaury@gmail.com",
+		subject: "New Booking",
+		text: `Date: ${req.body.date}\n
         Name: ${req.body.Name}\n
         E-Mail: ${req.body.Email}\n
         Phone: ${req.body.phoneNumber}\n
-        Place: ${req.body.Place}`
-    };
-    // mail data
-    const mailToUser = {
-        from: 'shaurysingh84@gmail.com',
-        to: req.body.Email,
-        subject: 'Appointment Confirmation For Ganga Aarti Events',
-        html: `<h1>The Following Is Your Appointment Details:</h1>
+        Place: ${req.body.Place}`,
+	};
+	// mail data
+	const mailToUser = {
+		from: "shaurysingh84@gmail.com",
+		to: req.body.Email,
+		subject: "Appointment Confirmation For Ganga Aarti Events",
+		html: `<h1>The Following Is Your Appointment Details:</h1>
                <p>Date: ${req.body.date}</p>
                <p>Name: ${req.body.Name}</p>
                <p>E-Mail: ${req.body.Email}</p>
                <p>Phone: ${req.body.phoneNumber}</p>
-               <p>Place: ${req.body.Place}</p>`
-    };
-    try {
-        await transporter.sendMail(mail);
-        console.log('Admin email sent successfully.');
-        await transporter.sendMail(mailToUser);
-        console.log('User confirmation email sent successfully.');
-        console.log(body);
-        res.render('sucess.pug');
-    } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).send('There was an error processing your request. Please try again later.');
-    }
+               <p>Place: ${req.body.Place}</p>`,
+	};
+	try {
+		await transporter.sendMail(mail);
+		console.log("Admin email sent successfully.");
+		await transporter.sendMail(mailToUser);
+		console.log("User confirmation email sent successfully.");
+		console.log(body);
+		res.render("sucess.pug");
+	} catch (error) {
+		console.error("Error sending email:", error);
+		res.status(500).send(
+			"There was an error processing your request. Please try again later."
+		);
+	}
 });
 
+app.get("/about-us", (req, res) => {
+	res.status(200).render("aboutUs.pug");
+});
 
-app.get('/about-us',(req,res)=>{
-    res.status(200).render("aboutUs.pug");
-})
+app.get("/gallery", (req, res) => {
+	res.status(200).render("gallery.pug");
+});
 
-app.get('/gallery',(req,res)=>{
-    res.status(200).render("gallery.pug")
-})
+app.get("/services", (req, res) => {
+	res.status(200).render("services.pug");
+});
 
-app.get('/services',(req,res)=>{
-    res.status(200).render('services.pug');
-})
-
-app.listen(port, ()=>{
-    console.log(`Application Started in Development Phase on you Localhost at Port:${port}`);
+app.listen(port, () => {
+	console.log(
+		`Application Started in Development Phase on you Localhost at Port:${port}`
+	);
 });
