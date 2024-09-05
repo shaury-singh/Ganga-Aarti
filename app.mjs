@@ -21,22 +21,6 @@ app.get("/book-your-aarti", (req, res) => {
 	res.status(200).render("book.pug");
 });
 
-const transporter = nodemailer.createTransport({
-	host: "mail.gangaaartievents.com", // SMTP server hostname
-	port: 465, // Port for SSL
-	secure: true, // Use SSL/TLS
-	auth: {
-		user: "support@gangaaartievents.com", // Your email address
-		pass: "support@gangaaartievents.com", // Your email account password
-	},
-});
-
-
-transporter.verify((err, success) => {
-	if (err) console.error(err);
-	console.log("Your config is correct");
-});
-
 // app.post('/book-your-aarti',async (req,res)=>{
 //     const body = req.body;
 //     // mail data
@@ -72,9 +56,27 @@ transporter.verify((err, success) => {
 //     });
 // });
 
+const transporter = nodemailer.createTransport({
+	host: "mail.gangaaartievents.com",
+	port: 465,
+	secure: true, // use TLS
+	auth: {
+		user: "info@gangaaartievents.com",
+		pass: "info@gangaaartievents.com",
+	},
+	tls: {
+		// do not fail on invalid certs
+		rejectUnauthorized: false,
+	},
+});
+
+transporter.verify((err, success) => {
+	if (err) console.error(err);
+	console.log("Your config is correct");
+});
+
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
-	// mail data
 	const mail = {
 		from: "support@gangaaartievents.com",
 		to: "rathore.singh.shaury@gmail.com",
@@ -85,7 +87,7 @@ app.post("/book-your-aarti", async (req, res) => {
         Phone: ${req.body.phoneNumber}\n
         Place: ${req.body.Place}`,
 	};
-	// mail data
+
 	const mailToUser = {
 		from: "support@gangaaartievents.com",
 		to: req.body.Email,
@@ -97,12 +99,12 @@ app.post("/book-your-aarti", async (req, res) => {
                <p>Phone: ${req.body.phoneNumber}</p>
                <p>Place: ${req.body.Place}</p>`,
 	};
+
 	try {
 		await transporter.sendMail(mail);
 		console.log("Admin email sent successfully.");
 		await transporter.sendMail(mailToUser);
 		console.log("User confirmation email sent successfully.");
-		console.log(body);
 		res.render("sucess.pug");
 	} catch (error) {
 		console.error("Error sending email:", error);
