@@ -30,24 +30,79 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.post('/book-your-aarti',(req,res)=>{
+// app.post('/book-your-aarti',async (req,res)=>{
+//     const body = req.body;
+//     // mail data
+//     const mail = {
+//         from: 'shaurysingh84@gmail.com',
+//         to: 'rathore.singh.shaury@gmail.com',
+//         subject: 'New Booking',
+//         text: `Date:${req.body.date}\n
+//         Name:${req.body.Name}\n
+//         E-Mail:${req.body.Email}\n
+//         Phone:${req.body.phoneNumber}\n
+//         Place:${req.body.Place}`
+//     };
+//     const mailToUser = {
+//         from: 'shaurysingh84@gmail.com',
+//         to: 'rathore.singh.shaury@gmail.com',
+//         subject: 'Appointment Confirmation For Ganga Aarti Events',
+//         // text: `The Following is yourDate:${req.body.date}\n
+//         // Name:${req.body.Name}\n
+//         // E-Mail:${req.body.Email}\n
+//         // Phone:${req.body.phoneNumber}\n
+//         // Place:${req.body.Place}`
+//         html: `<h1>The Following Is Your Appointment Details: <br> Date: ${req.body.date} <br>Name:${req.body.Name} <br>E-Mail:${req.body.Email} <br>Phone:${req.body.phoneNumber} <br>Place:${req.body.Place}`
+//     };
+//     transporter.sendMail(mail, (error, info) => {
+//         if (error) {
+//           return console.error('Error sending email:', error);
+//         }
+//         console.log('Email sent successfully:', info.response);
+//     }).then(()=>{
+//         console.log(body);
+//         res.render('sucess.pug');
+//     });
+// });
+
+app.post('/book-your-aarti', async (req, res) => {
     const body = req.body;
     // mail data
     const mail = {
         from: 'shaurysingh84@gmail.com',
         to: 'rathore.singh.shaury@gmail.com',
         subject: 'New Booking',
-        text: `date:${req.body.date}\nname:${req.body.Name}\nmail:${req.body.Email}\nphone:${req.body.phoneNumber}\nPlace:${req.body.Place}`
+        text: `Date: ${req.body.date}\n
+        Name: ${req.body.Name}\n
+        E-Mail: ${req.body.Email}\n
+        Phone: ${req.body.phoneNumber}\n
+        Place: ${req.body.Place}`
     };
-    transporter.sendMail(mail, (error, info) => {
-        if (error) {
-          return console.error('Error sending email:', error);
-        }
-        console.log('Email sent successfully:', info.response);
-    });
-    console.log(body);
-    res.send("Done");
-})
+    // mail data
+    const mailToUser = {
+        from: 'shaurysingh84@gmail.com',
+        to: req.body.Email,
+        subject: 'Appointment Confirmation For Ganga Aarti Events',
+        html: `<h1>The Following Is Your Appointment Details:</h1>
+               <p>Date: ${req.body.date}</p>
+               <p>Name: ${req.body.Name}</p>
+               <p>E-Mail: ${req.body.Email}</p>
+               <p>Phone: ${req.body.phoneNumber}</p>
+               <p>Place: ${req.body.Place}</p>`
+    };
+    try {
+        await transporter.sendMail(mail);
+        console.log('Admin email sent successfully.');
+        await transporter.sendMail(mailToUser);
+        console.log('User confirmation email sent successfully.');
+        console.log(body);
+        res.render('sucess.pug');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('There was an error processing your request. Please try again later.');
+    }
+});
+
 
 app.get('/about-us',(req,res)=>{
     res.status(200).render("aboutUs.pug");

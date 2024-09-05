@@ -79,3 +79,13 @@
 .nav-link:hover{
     color: white;
 }
+.white{
+    color: white;
+}
+.logo-success{
+    width: 200px;
+}
+.j-c{
+    display: flex;
+    justify-content: center;
+}
