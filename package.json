@@ -1,22 +1,20 @@
 {
-  "name": "ganga-aarti",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.mjs",
-  "scripts": {
-    "dev": "nodemon -r dotenv/config --experimental-json-modules app.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "shaurySingh-subhamKumar",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongodb": "^6.8.0",
-    "path": "^0.12.7",
-    "pug": "^3.0.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.4"
-  }
+	"name": "ganga-aarti",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.mjs",
+	"scripts": {
+		"start": "node loader.cjs",
+		"dev": "nodemon loader.cjs",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "shaurySingh-subhamKumar",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"mongodb": "^6.8.0",
+		"path": "^0.12.7",
+		"pug": "^3.0.3"
+	}
 }
