@@ -23,68 +23,9 @@ app.get("/book-your-aarti", (req, res) => {
 	res.status(200).render("book.pug");
 });
 
-// app.post('/book-your-aarti',async (req,res)=>{
-//     const body = req.body;
-//     // mail data
-//     const mail = {
-//         from: 'shaurysingh84@gmail.com',
-//         to: 'rathore.singh.shaury@gmail.com',
-//         subject: 'New Booking',
-//         text: `Date:${req.body.date}\n
-//         Name:${req.body.Name}\n
-//         E-Mail:${req.body.Email}\n
-//         Phone:${req.body.phoneNumber}\n
-//         Place:${req.body.Place}`
-//     };
-//     const mailToUser = {
-//         from: 'shaurysingh84@gmail.com',
-//         to: 'rathore.singh.shaury@gmail.com',
-//         subject: 'Appointment Confirmation For Ganga Aarti Events',
-//         // text: `The Following is yourDate:${req.body.date}\n
-//         // Name:${req.body.Name}\n
-//         // E-Mail:${req.body.Email}\n
-//         // Phone:${req.body.phoneNumber}\n
-//         // Place:${req.body.Place}`
-//         html: `<h1>The Following Is Your Appointment Details: <br> Date: ${req.body.date} <br>Name:${req.body.Name} <br>E-Mail:${req.body.Email} <br>Phone:${req.body.phoneNumber} <br>Place:${req.body.Place}`
-//     };
-//     transporter.sendMail(mail, (error, info) => {
-//         if (error) {
-//           return console.error('Error sending email:', error);
-//         }
-//         console.log('Email sent successfully:', info.response);
-//     }).then(()=>{
-//         console.log(body);
-//         res.render('sucess.pug');
-//     });
-// });
-
-// const transporter = nodemailer.createTransport({
-// 	host: "mail.gangaaartievents.com",
-// 	port: 465,
-// 	secure: true, // use TLS
-// 	auth: {
-// 		user: "info@gangaaartievents.com",
-// 		pass: "info@gangaaartievents.com",
-// 	},
-// 	tls: {
-// 		// do not fail on invalid certs
-// 		rejectUnauthorized: false,
-// 	},
-// });
-
-// transporter.verify((err, success) => {
-// 	if (err) console.error(err);
-// 	console.log("Your config is correct");
-// });
-
-// const mailjet = require("node-mailjet").connect(
-// 	"e1719917564ec6bbe573fe4dba68d26a",
-// 	"d7292215b6fada71dbf3fa9065f431aa"
-// );
-
 const mailjet = Mailjet.apiConnect(
-	"e1719917564ec6bbe573fe4dba68d26a",
-	"d7292215b6fada71dbf3fa9065f431aa"
+	"API KEY", // Update this with your API Key (Admin)
+	"API Secret" // Update this with your API Secret (Admin)
 );
 
 async function sendEmail(mailOptions) {
@@ -95,8 +36,8 @@ async function sendEmail(mailOptions) {
 				Messages: [
 					{
 						From: {
-							Email: "harshdeepanshustrix@gmail.com",
-							Name: "Harsh Deepanshu",
+							Email: "youremail@xyz.com", // Update this with your email (Admin)
+							Name: "Full Name", // Update this with your name (Admin)
 						},
 						To: [
 							{
@@ -114,6 +55,7 @@ async function sendEmail(mailOptions) {
 		return request.body;
 	} catch (error) {
 		console.error("Error sending email:", error);
+		console.log("Check API Key and Secret and Email Address (Admin)");
 		throw error;
 	}
 }
@@ -123,7 +65,7 @@ app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
 
 	const mailToAdmin = {
-		to: "rathore.singh.shaury@gmail.com",
+		to: "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
 		name: "Admin",
 		subject: "New Booking",
 		text: `Date: ${body.date}\n
