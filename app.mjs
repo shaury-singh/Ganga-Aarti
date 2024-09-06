@@ -92,7 +92,7 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 async function createTransporter() {
 	try {
-		const accessToken = await oAuth2Client.getAccessToken();
+		const accessToken = (await oAuth2Client.getAccessToken()).token;
 		const transporter = nodemailer.createTransport({
 			service: "gmail",
 			auth: {
@@ -101,14 +101,23 @@ async function createTransporter() {
 				clientId: CLIENT_ID,
 				clientSecret: CLIENT_SECRET,
 				refreshToken: REFRESH_TOKEN,
-				accessToken: accessToken.token, // Use .token here
+				accessToken: accessToken,
 			},
+			// Optional: specify host and port if needed
+			// host: 'smtp.gmail.com',
+			// port: 587,
+			// secure: false,
 		});
-		// Verify the transporter
+
+		// Verify transporter configuration
 		transporter.verify((err, success) => {
-			if (err) console.error("Error in verifying transporter", err);
-			console.log("Your config is correct");
+			if (err) {
+				console.error("Error in verifying transporter", err);
+			} else {
+				console.log("Your config is correct");
+			}
 		});
+
 		return transporter;
 	} catch (error) {
 		console.error("Error creating transporter", error);
@@ -123,10 +132,10 @@ app.post("/book-your-aarti", async (req, res) => {
 		to: "rathore.singh.shaury@gmail.com",
 		subject: "New Booking",
 		text: `Date: ${body.date}\n
-        Name: ${body.Name}\n
-        E-Mail: ${body.Email}\n
-        Phone: ${body.phoneNumber}\n
-        Place: ${body.Place}`,
+            Name: ${body.Name}\n
+            E-Mail: ${body.Email}\n
+            Phone: ${body.phoneNumber}\n
+            Place: ${body.Place}`,
 	};
 
 	const mailToUser = {
@@ -142,12 +151,12 @@ app.post("/book-your-aarti", async (req, res) => {
 	};
 
 	try {
-		const transporter = await createTransporter(); // Get the transporter
+		const transporter = await createTransporter();
 		await transporter.sendMail(mail);
 		console.log("Admin email sent successfully.");
 		await transporter.sendMail(mailToUser);
 		console.log("User confirmation email sent successfully.");
-		res.render("sucess.pug");
+		res.render("success.pug");
 	} catch (error) {
 		console.error("Error sending email:", error);
 		res.status(500).send(
