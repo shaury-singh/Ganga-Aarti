@@ -2,8 +2,9 @@ import express from "express";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import nodemailer from "nodemailer";
-import { google } from "googleapis";
+// import nodemailer from "nodemailer";
+// import { google } from "googleapis";
+import Mailjet from "node-mailjet";
 
 const app = express();
 const port = 8000;
@@ -76,72 +77,72 @@ app.get("/book-your-aarti", (req, res) => {
 // 	console.log("Your config is correct");
 // });
 
-const CLIENT_ID =
-	"405359127930-5bv29egjig19bqike6rjd2acjhssvsf2.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-const REDIRECT_URI = "https://developers.google.com/oauthplayground";
-const REFRESH_TOKEN =
-	"1//046u2hxMUAPM-CgYIARAAGAQSNwF-L9IrbIoixknxBqOZaNY4oMdufkH_YQ_2TptE75l0u6W6CKyaX9F94iIuy7mTMFFgqrauKI4";
+// const mailjet = require("node-mailjet").connect(
+// 	"e1719917564ec6bbe573fe4dba68d26a",
+// 	"d7292215b6fada71dbf3fa9065f431aa"
+// );
 
-const oAuth2Client = new google.auth.OAuth2(
-	CLIENT_ID,
-	CLIENT_SECRET,
-	REDIRECT_URI
+const mailjet = Mailjet.apiConnect(
+	"e1719917564ec6bbe573fe4dba68d26a",
+	"d7292215b6fada71dbf3fa9065f431aa"
 );
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-async function createTransporter() {
+async function sendEmail(mailOptions) {
 	try {
-		const accessToken = (await oAuth2Client.getAccessToken()).token;
-		const transporter = nodemailer.createTransport({
-			service: "gmail",
-			auth: {
-				type: "OAuth2",
-				user: "harshdeepanshustrix@gmail.com",
-				clientId: CLIENT_ID,
-				clientSecret: CLIENT_SECRET,
-				refreshToken: REFRESH_TOKEN,
-				accessToken: accessToken,
-			},
-			host: "smtp.gmail.com",
-			port: 587, // or 465 for SSL
-			secure: false, // Set to true if using port 465
-		});
-
-		// Verify transporter configuration
-		transporter.verify((err, success) => {
-			if (err) {
-				console.error("Error in verifying transporter", err);
-			} else {
-				console.log("Your config is correct");
-			}
-		});
-
-		return transporter;
+		const request = await mailjet
+			.post("send", { version: "v3.1" })
+			.request({
+				Messages: [
+					{
+						From: {
+							Email: "harshdeepanshustrix@gmail.com",
+							Name: "Harsh Deepanshu",
+						},
+						To: [
+							{
+								Email: mailOptions.to,
+								Name: mailOptions.name,
+							},
+						],
+						Subject: mailOptions.subject,
+						TextPart: mailOptions.text,
+						HTMLPart: mailOptions.html,
+					},
+				],
+			});
+		console.log("Email sent successfully:", request.body);
+		return request.body;
 	} catch (error) {
-		console.error("Error creating transporter", error);
+		console.error("Error sending email:", error);
 		throw error;
 	}
 }
 
+// Example usage for sending a booking confirmation
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
-	const mail = {
-		from: "harshdeepanshustrix@gmail.com",
+
+	const mailToAdmin = {
 		to: "rathore.singh.shaury@gmail.com",
+		name: "Admin",
 		subject: "New Booking",
 		text: `Date: ${body.date}\n
-            Name: ${body.Name}\n
-            E-Mail: ${body.Email}\n
-            Phone: ${body.phoneNumber}\n
-            Place: ${body.Place}`,
+               Name: ${body.Name}\n
+               E-Mail: ${body.Email}\n
+               Phone: ${body.phoneNumber}\n
+               Place: ${body.Place}`,
+		html: `<p>Date: ${body.date}</p>
+               <p>Name: ${body.Name}</p>
+               <p>E-Mail: ${body.Email}</p>
+               <p>Phone: ${body.phoneNumber}</p>
+               <p>Place: ${body.Place}</p>`,
 	};
 
 	const mailToUser = {
-		from: "harshdeepanshustrix@gmail.com",
 		to: body.Email,
+		name: body.Name,
 		subject: "Appointment Confirmation For Ganga Aarti Events",
-		html: `<h1>The Following Is Your Appointment Details:</h1>
+		html: `<h1>Your Appointment Details:</h1>
                <p>Date: ${body.date}</p>
                <p>Name: ${body.Name}</p>
                <p>E-Mail: ${body.Email}</p>
@@ -150,10 +151,9 @@ app.post("/book-your-aarti", async (req, res) => {
 	};
 
 	try {
-		const transporter = await createTransporter();
-		await transporter.sendMail(mail);
+		await sendEmail(mailToAdmin);
 		console.log("Admin email sent successfully.");
-		await transporter.sendMail(mailToUser);
+		await sendEmail(mailToUser);
 		console.log("User confirmation email sent successfully.");
 		res.render("success.pug");
 	} catch (error) {
