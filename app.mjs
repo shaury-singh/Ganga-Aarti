@@ -103,10 +103,9 @@ async function createTransporter() {
 				refreshToken: REFRESH_TOKEN,
 				accessToken: accessToken,
 			},
-			// Optional: specify host and port if needed
-			// host: 'smtp.gmail.com',
-			// port: 587,
-			// secure: false,
+			host: "smtp.gmail.com",
+			port: 587, // or 465 for SSL
+			secure: false, // Set to true if using port 465
 		});
 
 		// Verify transporter configuration
