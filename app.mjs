@@ -25,7 +25,7 @@ app.get("/book-your-aarti", (req, res) => {
 
 const mailjet = Mailjet.apiConnect(
 	"API KEY", // Update this with your API Key (Admin)
-	"API Secret" // Update this with your API Secret (Admin)
+	"API SECRET" // Update this with your API Secret (Admin)
 );
 
 async function sendEmail(mailOptions) {
@@ -36,8 +36,8 @@ async function sendEmail(mailOptions) {
 				Messages: [
 					{
 						From: {
-							Email: "youremail@xyz.com", // Update this with your email (Admin)
-							Name: "Full Name", // Update this with your name (Admin)
+							Email: "EMAIL ID", // Update this with your email (Admin)
+							Name: "FULL NAME", // Update this with your name (Admin)
 						},
 						To: [
 							{
