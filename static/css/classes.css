@@ -85,6 +85,9 @@
 .logo-success{
     width: 200px;
 }
+.logo{
+    width: 100px;
+}
 .j-c{
     display: flex;
     justify-content: center;
