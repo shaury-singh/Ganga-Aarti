@@ -4,7 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 // import nodemailer from "nodemailer";
 // import { google } from "googleapis";
-import Mailjet from "node-mailjet";
+// import Mailjet from "node-mailjet";
 
 const app = express();
 const port = 8000;

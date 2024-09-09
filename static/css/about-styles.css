@@ -64,7 +64,7 @@ main{
     justify-content: left;
     margin: 20px 0px 0px 30px;
 }
-.submit-div button{
+.submit-div a button{
     height: max-content;
     width: max-content;
     padding: 10px 10px;
