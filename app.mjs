@@ -24,8 +24,8 @@ app.get("/book-your-aarti", (req, res) => {
 });
 
 const mailjet = Mailjet.apiConnect(
-	"API KEY", // Update this with your API Key (Admin)
-	"API SECRET" // Update this with your API Secret (Admin)
+	"42813a9d97ba3814e3d7fac59497c724", // Update this with your API Key (Admin)
+	"e2ffcf4193e225abc9f75110f35295b8" // Update this with your API Secret (Admin)
 );
 
 async function sendEmail(mailOptions) {
@@ -36,8 +36,8 @@ async function sendEmail(mailOptions) {
 				Messages: [
 					{
 						From: {
-							Email: "EMAIL ID", // Update this with your email (Admin)
-							Name: "FULL NAME", // Update this with your name (Admin)
+							Email: "mahagangaaartievents@gmail.com", // Update this with your email (Admin)
+							Name: "maha gangaaartievents", // Update this with your name (Admin)
 						},
 						To: [
 							{
