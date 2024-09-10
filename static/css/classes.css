@@ -12,7 +12,7 @@
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-size: larger;
+    font-size: x-large;
     color: white;
     text-decoration: none;
 }
@@ -86,9 +86,17 @@
     width: 200px;
 }
 .logo{
-    width: 100px;
+    width: 150px;
 }
 .j-c{
     display: flex;
     justify-content: center;
+}
+.head-slogan{
+    margin: 12px 10px;
+}
+@media screen and (max-width: 600px){
+    .nav-link{
+        font-size: large;
+    }
 }

@@ -72,6 +72,7 @@ header{
 }
 .right-info p{
     color: white;
+    font-family: "Roboto", sans-serif;
 }
 .heading-event-collection{
     width: 100%;

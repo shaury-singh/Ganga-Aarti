@@ -3,8 +3,8 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 // import nodemailer from "nodemailer";
-// import { google } from "googleapis";
-// import Mailjet from "node-mailjet";
+import { google } from "googleapis";
+import Mailjet from "node-mailjet";
 
 const app = express();
 const port = 8000;
@@ -60,7 +60,7 @@ async function sendEmail(mailOptions) {
 	}
 }
 
-// Example usage for sending a booking confirmation
+// // Example usage for sending a booking confirmation
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
 
