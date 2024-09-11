@@ -2,8 +2,6 @@ import express from "express";
 import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-// import nodemailer from "nodemailer";
-import { google } from "googleapis";
 import Mailjet from "node-mailjet";
 
 const app = express();
@@ -64,46 +62,46 @@ async function sendEmail(mailOptions) {
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
 
-const mailToAdmin = {
-	to: "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
-	name: "Admin",
-	subject: "New Booking",
-	text: `Date: ${body.date}\n
+	const mailToAdmin = {
+		to: "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
+		name: "Admin",
+		subject: "New Booking",
+		text: `Date: ${body.date}\n
               Name: ${body.Name}\n
               E-Mail: ${body.Email}\n
               Phone: ${body.phoneNumber}\n
               Place: ${body.Place}`,
-	html: `<p>Date: ${body.date}</p>
+		html: `<p>Date: ${body.date}</p>
               <p>Name: ${body.Name}</p>
               <p>E-Mail: ${body.Email}</p>
               <p>Phone: ${body.phoneNumber}</p>
               <p>Place: ${body.Place}</p>`,
-};
+	};
 
-const mailToUser = {
-	to: body.Email,
-	name: body.Name,
-	subject: "Appointment Confirmation For Ganga Aarti Events",
-	html: `<h1>Your Appointment Details:</h1>
+	const mailToUser = {
+		to: body.Email,
+		name: body.Name,
+		subject: "Appointment Confirmation For Ganga Aarti Events",
+		html: `<h1>Your Appointment Details:</h1>
               <p>Date: ${body.date}</p>
               <p>Name: ${body.Name}</p>
               <p>E-Mail: ${body.Email}</p>
               <p>Phone: ${body.phoneNumber}</p>
               <p>Place: ${body.Place}</p>`,
-};
+	};
 
-try {
-	await sendEmail(mailToAdmin);
-	console.log("Admin email sent successfully.");
-	await sendEmail(mailToUser);
-	console.log("User confirmation email sent successfully.");
-	res.render("success.pug");
-} catch (error) {
-	console.error("Error sending email:", error);
-	res.status(500).send(
-		"There was an error processing your request. Please try again later."
-	);
-}
+	try {
+		await sendEmail(mailToAdmin);
+		console.log("Admin email sent successfully.");
+		await sendEmail(mailToUser);
+		console.log("User confirmation email sent successfully.");
+		res.render("success.pug");
+	} catch (error) {
+		console.error("Error sending email:", error);
+		res.status(500).send(
+			"There was an error processing your request. Please try again later."
+		);
+	}
 });
 
 app.get("/about-us", (req, res) => {
