@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-.primary-flex{
+
+.primary-flex {
     display: flex;
 }
-.justify-center{
+
+.justify-center {
     justify-content: center;
 }
-.container-fluid a img{
+
+.container-fluid a img {
     width: 100px;
 }
-.nav-link{
+
+.nav-link {
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -16,15 +20,18 @@
     color: white;
     text-decoration: none;
 }
-.list-flat{
+
+.list-flat {
     display: flex;
     justify-content: end;
     list-style: none;
 }
-.list-flat a{
+
+.list-flat a {
     text-decoration: none;
 }
-.list-elements{
+
+.list-elements {
     position: relative;
     color: white;
     font-family: "Playfair Display", serif;
@@ -34,7 +41,8 @@
     text-decoration: none;
     margin-left: 25px;
 }
-.list-elements::after{
+
+.list-elements::after {
     content: "";
     position: absolute;
     background-color: white;
@@ -44,59 +52,76 @@
     left: 0%;
     bottom: -5px;
 }
-.list-elements:hover::after{
+
+.list-elements:hover::after {
     width: 100%;
     position: absolute;
     transition: 0.6s;
 }
-.justify-end{
+
+.justify-end {
     justify-content: end;
 }
-.justify-start{
+
+.justify-start {
     justify-content: start;
 }
-.float-33{
-    float:left;
+
+.float-33 {
+    float: left;
     width: 33.33%;
 }
-.float-35{
+
+.float-35 {
     float: left;
     width: 35%;
 }
-.float-65{
+
+.float-65 {
     float: left;
     width: 65%;
 }
-.margin-bottom{
+
+.margin-bottom {
     margin-bottom: 25px;
 }
-.bg-footer{
+
+.bg-footer {
     background-color: rgba(27, 27, 27, 0.833);
 }
-.pad{
+
+.pad {
     padding: 40px;
 }
-.nav-link:hover{
+
+.nav-link:hover {
     color: white;
 }
-.white{
+
+.white {
     color: white;
 }
-.logo-success{
+
+.logo-success {
     width: 200px;
 }
-.logo{
+
+.logo {
     width: 150px;
+    height: 150px;
 }
-.j-c{
+
+.j-c {
     display: flex;
     justify-content: center;
 }
-.head-slogan{
+
+.head-slogan {
     margin: 12px 10px;
 }
-@media screen and (max-width: 600px){
-    .nav-link{
+
+@media screen and (max-width: 600px) {
+    .nav-link {
         font-size: large;
     }
 }
