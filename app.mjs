@@ -3,6 +3,8 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import Mailjet from "node-mailjet";
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port = 8000;
@@ -22,8 +24,8 @@ app.get("/book-your-aarti", (req, res) => {
 });
 
 const mailjet = Mailjet.apiConnect(
-	"42813a9d97ba3814e3d7fac59497c724", // Update this with your API Key (Admin)
-	"e2ffcf4193e225abc9f75110f35295b8" // Update this with your API Secret (Admin)
+	process.env.MAILJET_API_KEY, // Update this with your API Key (Admin)
+	process.env.MAILJET_API_SECRET // Update this with your API Secret (Admin)
 );
 
 async function sendEmail(mailOptions) {
@@ -34,8 +36,8 @@ async function sendEmail(mailOptions) {
 				Messages: [
 					{
 						From: {
-							Email: "mahagangaaartievents@gmail.com", // Update this with your email (Admin)
-							Name: "maha gangaaartievents", // Update this with your name (Admin)
+							Email: process.env.ADMIN_EMAIL, // Update this with your email (Admin)
+							Name: process.env.ADMIN_NAME, // Update this with your name (Admin)
 						},
 						To: [
 							{
@@ -63,7 +65,7 @@ app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
 
 	const mailToAdmin = {
-		to: "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
+		to: process.env.CLIENT_MAIL || "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
 		name: "Admin",
 		subject: "New Booking",
 		text: `Date: ${body.date}\n
