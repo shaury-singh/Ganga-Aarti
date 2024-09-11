@@ -3,7 +3,7 @@ deployment:
     tasks:
         # Sync all files from the current directory to `Ganga-Aarti`, excluding the `static` directory
         # Use --delete to remove files in the destination that no longer exist in the source
-        - rsync -avz --delete --exclude='static/' --exclude='.*' ./ ~/Ganga-Aarti/
+        - rsync -avz --delete --include='.env' --exclude='/static/' --exclude='.*' ./ ~/Ganga-Aarti/
 
         # Sync files from the `static` directory in the current directory to `public_html/static`
         # Use --delete to remove files in the destination that no longer exist in the source
