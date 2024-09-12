@@ -66,7 +66,7 @@ app.post("/book-your-aarti", async (req, res) => {
 	const mailToAdmin = {
 		to: process.env.CLIENT_MAIL, // Update this with your email (Admin)
 		name: "Admin",
-		subject: "New Booking",
+		subject: `New Booking by ${body.Name}`,
 		text: `Date: ${body.date}\n
               Name: ${body.Name}\n
               E-Mail: ${body.Email}\n
@@ -98,7 +98,6 @@ app.post("/book-your-aarti", async (req, res) => {
 		console.log("User confirmation email sent successfully.");
 		res.render("success.pug");
 	} catch (error) {
-		console.error("Error sending email:", error);
 		res.status(500).send(
 			"There was an error processing your request. Please try again later."
 		);
