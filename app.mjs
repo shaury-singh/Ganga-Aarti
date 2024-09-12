@@ -63,8 +63,6 @@ async function sendEmail(mailOptions) {
 // // Example usage for sending a booking confirmation
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
-	console.log(process.env.CLIENT_MAIL);
-
 	const mailToAdmin = {
 		to: process.env.CLIENT_MAIL, // Update this with your email (Admin)
 		name: "Admin",
