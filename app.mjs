@@ -3,7 +3,7 @@ import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import Mailjet from "node-mailjet";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
@@ -63,9 +63,10 @@ async function sendEmail(mailOptions) {
 // // Example usage for sending a booking confirmation
 app.post("/book-your-aarti", async (req, res) => {
 	const body = req.body;
+	console.log(process.env.CLIENT_MAIL);
 
 	const mailToAdmin = {
-		to: process.env.CLIENT_MAIL || "rathore.singh.shaury@gmail.com", // Update this with your email (Admin)
+		to: process.env.CLIENT_MAIL, // Update this with your email (Admin)
 		name: "Admin",
 		subject: "New Booking",
 		text: `Date: ${body.date}\n
